@@ -1,0 +1,158 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4f8; /* ライトグレー */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* 画面上部に寄せる */
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 50px; /* 上部に少し余白 */
+  color: #333;
+}
+
+.container {
+  background-color: #ffffff; /* ホワイト */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50; /* ダークネイビー */
+  margin-bottom: 30px;
+}
+
+.input-area {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+#todo-input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 2px solid #bdc3c7; /* ミディアムグレー */
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none; /* フォーカス時のアウトラインを消す */
+}
+
+#todo-input:focus {
+  border-color: #3498db; /* ブルー */
+}
+
+#add-todo-btn {
+  background-color: #3498db; /* ブルー */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+#add-todo-btn:hover {
+  background-color: #2980b9; /* 少し濃いブルー */
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: #ecf0f1; /* ライトグレー */
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.2s ease;
+  border-left: 5px solid transparent; /* 未完了の項目にはボーダーなし */
+}
+
+.todo-item.completed {
+  background-color: #d6e9f8; /* 完了時の背景色（ライトブルー） */
+  border-left-color: #2ecc71; /* 完了時のボーダー色（グリーン） */
+  text-decoration: line-through;
+  color: #7f8c8d; /* 完了時の文字色 */
+}
+
+.todo-item span {
+  flex-grow: 1; /* テキストが領域を占めるように */
+  margin-right: 10px;
+  word-wrap: break-word; /* 長い単語でも強制的に改行 */
+  overflow-wrap: break-word; /* word-wrapの新しい標準プロパティ */
+  flex-basis: 0; /* flexアイテムの初期サイズを0にする */
+  min-width: 0; /* 最小幅を0に設定し、内容によって無限に伸びないようにする */
+}
+
+.todo-item .actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #3498db; /* チェックボックスの色 */
+}
+
+.todo-item .delete-btn {
+  background-color: #e74c3c; /* レッド */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.todo-item .delete-btn:hover {
+  background-color: #c0392b; /* 少し濃いレッド */
+}
+
+.todo-item .edit-btn {
+  background-color: #20a220; /* グリーン */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+/* 編集中のinput要素のスタイル */
+.todo-item .edit-input {
+  flex-grow: 1; /* spanと同様にテキストが領域を占めるように */
+  padding: 10px 0; /* 内側の余白 */
+  border: none; /* デフォルトの枠線を消す */
+  border-bottom: 2px solid #3498db; /* 下線で強調 */
+  font-size: 1em; /* spanと同じフォントサイズ */
+  outline: none; /* フォーカス時のアウトラインを消す */
+  background-color: transparent; /* 背景を透明に */
+  color: #2c3e50; /* 文字色 */
+}
+
+/* 編集中のli要素のスタイル */
+.todo-item.editing {
+  background-color: #f8f8f8; /* 編集中は少し明るい背景に */
+  border-left-color: #3498db; /* 左側のボーダーを青に */
+}
+
+/* 編集中はチェックボックスと削除ボタンを非表示にする（任意） */
+.todo-item.editing .actions input[type="checkbox"],
+.todo-item.editing .actions .delete-btn,
+.todo-item.editing .actions .edit-btn {
+  display: none; /* チェックボックス、削除ボタン、編集ボタンを非表示 */
+}
